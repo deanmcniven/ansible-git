@@ -1,0 +1,22 @@
+---
+- name: Set git_username if not defined
+  become: false
+  set_fact:
+    git_username: "{{ local_user_fullname }}"
+  when: git_username is not defined
+
+- name: Install Git and Diff Tool
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git
+    - meld
+
+- name: Configure Git
+  become: false
+  template:
+    src: gitconfig.j2
+    dest: "{{ local_user_homedir }}/.gitconfig"
+    mode: 0644
