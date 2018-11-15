@@ -8,11 +8,10 @@
 - name: Install Git and Diff Tool
   become: true
   apt:
-    name: "{{ item }}"
+    pkg:
+      - git
+      - meld
     state: present
-  with_items:
-    - git
-    - meld
 
 - name: Configure Git
   become: false
