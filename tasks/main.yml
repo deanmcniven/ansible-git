@@ -19,3 +19,11 @@
     src: gitconfig.j2
     dest: "{{ local_user_homedir }}/.gitconfig"
     mode: 0644
+
+- name: Configure Global gitignore
+  become: false
+  template:
+    src: gitignore_global.j2
+    dest: "{{ local_user_homedir }}/.gitignore_global"
+    mode: 0644
+
