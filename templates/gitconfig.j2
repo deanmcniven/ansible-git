@@ -6,8 +6,10 @@
     tool = meld
 [difftool]
     prompt = false
+{% if git_install_meld %}
 [merge]
     tool = meld
+{% endif %}
 [push]
 	default = current
 [alias]

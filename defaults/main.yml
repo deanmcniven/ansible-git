@@ -1,3 +1,4 @@
 ---
 git_ignore_intellij_project_files: true
 git_ignore_maven_target_directory: true
+git_install_meld: true

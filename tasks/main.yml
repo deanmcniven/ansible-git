@@ -5,13 +5,20 @@
     git_username: "{{ local_user_fullname }}"
   when: git_username is not defined
 
-- name: Install Git and Diff Tool
+- name: Install Git
   become: true
   apt:
     pkg:
       - git
+    state: present
+
+- name: Install Diff Tool
+  become: true
+  apt:
+    pkg:
       - meld
     state: present
+  when: git_install_meld
 
 - name: Configure Git
   become: false
