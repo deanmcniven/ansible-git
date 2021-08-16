@@ -32,6 +32,9 @@
 [core]
     editor = vim
     excludesfile = {{ local_user_homedir }}/.gitignore_global
+{% if git_autocrlf is defined %}
+    autocrlf = {{ git_autocrlf }}
+{% endif %}
 [user]
     name = {{ git_username }}
     email = {{ git_email }}
