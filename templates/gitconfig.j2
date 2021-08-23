@@ -2,13 +2,16 @@
     ui = auto
 [log]
     date = local
+{% if git_install_meld %}
 [diff]
     tool = meld
 [difftool]
     prompt = false
-{% if git_install_meld %}
 [merge]
     tool = meld
+{% else %}
+[difftool]
+    prompt = true
 {% endif %}
 [push]
 	default = current
@@ -26,7 +29,9 @@
     lg-unmerged-commits = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative HEAD..origin/master
     lg-local-commits-for-all-branches = log --branches --not --remotes --simplify-by-decoration --decorate --oneline
     diff-local = diff origin/HEAD
+{% if git_install_meld %}
     meld = difftool --dir-diff
+{% endif %}
 [branch]
     autosetuprebase = always
 [core]
