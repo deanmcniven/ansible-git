@@ -14,4 +14,5 @@ The following variables can be set to adjust the behaviour of the git role.
 * `git_ignore_additional_patterns`: Additional patterns to add to the global gitignore file
 * `git_install_meld`: Controls whether to install meld as the diff tool, Defaults to true
 * `git_autocrlf`: If defined, sets the autocrlf flag to the value of the variable
+* `git_use_keychain`: If defined, configures git to use the system keychain for storing credentials. Defaults to false
 

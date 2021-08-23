@@ -40,6 +40,10 @@
 {% if git_autocrlf is defined %}
     autocrlf = {{ git_autocrlf }}
 {% endif %}
+{% if git_use_keychain %}
+[credential]
+    helper = /usr/bin/keychain
+{% endif %}
 [user]
     name = {{ git_username }}
     email = {{ git_email }}
