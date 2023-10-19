@@ -5,20 +5,24 @@
     git_username: "{{ local_user_fullname }}"
   when: git_username is not defined
 
-- name: Install Git
+- name: Install Git (Ubuntu)
   become: true
   apt:
     pkg:
       - git
     state: present
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
 
-- name: Install Diff Tool
+- name: Install Diff Tool (Ubuntu)
   become: true
   apt:
     pkg:
       - meld
     state: present
-  when: git_install_meld
+  when:
+    - git_install_meld
+    - ansible_facts['distribution'] == "Ubuntu"
 
 - name: Configure Git
   become: false
